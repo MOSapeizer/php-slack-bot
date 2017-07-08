@@ -2,6 +2,9 @@
 
 abstract class Environment
 {
+    const BOT_ID = "";
+
+
     const BOT_TOKEN = "";
 
 
