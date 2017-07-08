@@ -1,0 +1,19 @@
+{
+    "name": "mos/slack-god",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mosapeizer",
+            "email": "k471352@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Moz\\Core\\": "core/",
+            "App\\": "app/",
+            "App\\Controller\\": "app/controller"
+        }
+    }
+}
