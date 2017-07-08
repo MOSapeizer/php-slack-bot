@@ -23,6 +23,7 @@ class Curl
         curl_setopt( $curl, CURLOPT_URL, $url);
         curl_setopt( $curl, CURLOPT_HTTPHEADER,     array("Content-Type: application/json"));
         curl_setopt( $curl, CURLOPT_POSTFIELDS, $context );
+        self::Logger( json_encode($context) );
         return self::Logger( curl_exec( $curl ) );
     }
 
