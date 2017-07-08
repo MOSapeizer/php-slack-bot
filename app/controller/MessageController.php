@@ -1,5 +1,6 @@
 <?php namespace App\Controller;
 
+use App\Api\SlackWeb;
 
 class MessageController
 {
@@ -12,7 +13,9 @@ class MessageController
 
     function loop_back()
     {
-        $data["text"] = $this->data["event"]["text"];
-        return $data;
+        $channel = $this->data["event"]["channel"];
+        $text    = $this->data["event"]["text"];
+
+        return SlackWeb\Chat::postMessage($channel, $text);
     }
 }
