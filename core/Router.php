@@ -25,12 +25,18 @@ class Router
     {
         foreach ($this->routes as $uri => $action)
         {
-            if ($this->request_payload["type"] == $uri)
-            {
-                echo $this->callAction( ...explode("#", $this->routes[$uri]) );
-                return;
-            }
+            if ($this->request_payload["type"] != $uri)
+                continue;
+
+            return $this->getResponse($uri);
         }
+    }
+
+    private function getResponse($uri)
+    {
+        $action = explode("#", $this->routes[$uri]);
+        echo $this->callAction( $action[0], $action[1] );
+        return null;
     }
 
     private function callAction($controller, $action)
