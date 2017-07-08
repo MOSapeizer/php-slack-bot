@@ -14,7 +14,8 @@ class MessageController
 
     function loop_back()
     {
-        if( $this->data["event"]["user"] == Environment::BOT_ID )
+        if( $this->data["event"]["bot_id"]  == Environment::BOT_ID OR
+            $this->data["event"]["subtype"] == "bot_message" )
             return "";
 
         $channel = $this->data["event"]["channel"];
