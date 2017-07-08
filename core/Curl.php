@@ -15,15 +15,15 @@ class Curl
         return curl_exec( $curl );
     }
 
-    public static function POST($url, $context)
+    public static function POST($url, $context=[])
     {
         $curl = curl_init();
         curl_setopt( $curl, CURLOPT_POST, true );
         curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
         curl_setopt( $curl, CURLOPT_URL, $url);
-        curl_setopt( $curl, CURLOPT_HTTPHEADER,     array("Content-Type: application/json"));
-        curl_setopt( $curl, CURLOPT_POSTFIELDS, $context );
-        self::Logger( json_encode($context) );
+        curl_setopt( $curl, CURLOPT_HTTPHEADER,     array("Content-Type: x-www-form-urlencoded"));
+        curl_setopt( $curl, CURLOPT_POSTFIELDS, http_build_query($context));
+        self::Logger( http_build_query($context) );
         return self::Logger( curl_exec( $curl ) );
     }
 
@@ -32,7 +32,7 @@ class Curl
         if( Environment::DEBUG )
         {
             $result = file_get_contents(Environment::LOG_FILE);
-            $result .= $message;
+            $result .= "\n" . $message;
             file_put_contents(Environment::LOG_FILE,  $result);
         }
 
