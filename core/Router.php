@@ -25,16 +25,25 @@ class Router
     {
         foreach ($this->routes as $uri => $action)
         {
-            if ($this->request_payload["type"] != $uri)
+            if ( !$this->checkInRouter($uri) )
                 continue;
 
-            return $this->getResponse($uri);
+            return $this->getResponse($action);
         }
     }
 
-    private function getResponse($uri)
+    private function checkInRouter($uri)
     {
-        $action = explode("#", $this->routes[$uri]);
+        if( !isset($this->request_payload["event"]) )
+            return $this->request_payload["type"] == $uri;
+
+        $type_of_event = $this->request_payload["type"] . "/" . $this->request_payload["event"]["type"];
+        return $type_of_event == $uri;
+    }
+
+    private function getResponse($action)
+    {
+        $action = explode("#", $action);
         echo $this->callAction( $action[0], $action[1] );
         return null;
     }
