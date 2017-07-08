@@ -16,6 +16,7 @@ class MessageController
         $channel = $this->data["event"]["channel"];
         $text    = $this->data["event"]["text"];
 
-        return SlackWeb\Chat::postMessage($channel, $text);
+        SlackWeb\Chat::postMessage($channel, $text);
+        return '';
     }
 }
