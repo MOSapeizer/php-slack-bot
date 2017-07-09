@@ -13,7 +13,8 @@
         "psr-4": {
             "Moz\\Core\\": "core/",
             "App\\": "app/",
-            "App\\Controller\\": "app/controller"
+            "App\\Controller\\": "app/controller",
+            "App\\Api\\SlackWeb\\": "app/api"
         }
     }
 }
