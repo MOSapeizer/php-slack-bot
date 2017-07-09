@@ -3,7 +3,6 @@
 class Router
 {
     private $routes = [];
-    private $parameters = [];
     private $request_payload;
 
     public function __construct(array $routes)

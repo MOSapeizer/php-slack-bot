@@ -1,17 +1,11 @@
 <?php namespace App\Controller;
 
 use App\Api\SlackWeb;
+use Moz\Core\Controller;
 use Moz\Core\Environment;
 
-class MessageController
+class MessageController extends Controller
 {
-    private $data;
-
-    public function __construct($json)
-    {
-        $this->data = $json;
-    }
-
     function loop_back()
     {
         if( $this->data["event"]["bot_id"]  == Environment::BOT_ID OR

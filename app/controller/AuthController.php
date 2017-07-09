@@ -1,14 +1,9 @@
 <?php namespace App\Controller;
 
-class AuthController
+use Moz\Core\Controller;
+
+class AuthController extends Controller
 {
-    private $data;
-
-    public function __construct($json)
-    {
-        $this->data = $json;
-    }
-
     function challenge()
     {
         if( isset($this->data['challenge']))
