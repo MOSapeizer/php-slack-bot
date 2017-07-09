@@ -18,6 +18,6 @@ class Chat
         foreach ($option as $key => $value)
             $data[ $key ] = $value;
 
-        Curl::POST(static::URL . "postMessage", $data);
+        return Curl::POST(static::URL . "postMessage", $data);
     }
 }
