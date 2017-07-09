@@ -24,6 +24,7 @@ class Controller
 
     public function __construct($json)
     {
-        Logger::log($this->data = $json);
+        $this->data = $json;
+        Logger::log( print_r($json, TRUE) );
     }
 }
